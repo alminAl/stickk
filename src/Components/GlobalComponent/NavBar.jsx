@@ -12,7 +12,7 @@ const NavBar = () => {
    });
 
    return (
-      <div className=' w-full fixed top-0 left-0 z-10'>
+      <div className='w-full fixed top-0 left-0 z-10'>
          <div className='lg:flex items-center justify-between bg-white py-4 px-3 sm:px-3.5 md:px-7 lg:px-14 xl:px-24'>
             <Link to='/'>
                <span>
@@ -54,12 +54,14 @@ const NavBar = () => {
                {!loggedInUser.email && (
                   <>
                      <li className='lg:ml-6 text-base lg:my-0 my-7'>
-                        <Link to='/' className='signIn-btn rounded-full'>
+                        <Link to='/sign_in' className='signIn-btn rounded-full'>
                            SIGN IN
                         </Link>
                      </li>
                      <li className='lg:ml-6 text-base lg:my-0 my-7'>
-                        <Link to='/' className='register-btn rounded-full'>
+                        <Link
+                           to='/register'
+                           className='register-btn rounded-full'>
                            REGISTER
                         </Link>
                      </li>
