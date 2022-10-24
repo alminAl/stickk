@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import DashboardHome from './Components/Dashboard/DashboardHome.jsx';
+import Profile from './Components/Dashboard/Profile.jsx';
 import Layout from './Layout/Layout.jsx';
 import Error from './Pages/Error.jsx';
 import Home from './Pages/Home.jsx';
@@ -13,8 +15,13 @@ function App() {
                <Routes>
                   <Route path='/' element={<Home />} />
                   <Route index element={<Home />} />
-                  <Route path='sign_in' element={<SignIn />} />
-                  <Route path='register' element={<Register />} />
+                  <Route path='login' element={<SignIn />} />
+                  <Route path='signin' element={<Register />} />
+
+                  {/* dashboard route */}
+                  <Route path='dashboard' element={<DashboardHome />}>
+                     <Route path='profile' element={<Profile />} />
+                  </Route>
                   <Route path='*' element={<Error />} />
                </Routes>
             </Layout>

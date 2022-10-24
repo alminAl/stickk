@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import brand from '../../images/stickk_logo_top.png';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import { useAuthContext } from '../../hooks/useAuthContext.jsx';
+import { useLogout } from '../../hooks/useLogout.jsx';
 
 const NavBar = () => {
    const [open, setOpen] = useState(false);
-   const [loggedInUser, setLoggedInUser] = useState({
-      email: '',
-      userName: 'mamun',
-   });
+   const { logout } = useLogout();
+   const { user } = useAuthContext();
 
    return (
       <div className='w-full fixed top-0 left-0 z-10'>
@@ -51,34 +51,37 @@ const NavBar = () => {
                      HELP CENTER
                   </Link>
                </li>
-               {!loggedInUser.email && (
+
+               {user ? (
+                  <>
+                     <li className='lg:flex items-center space-x-4 text-base lg:my-0 my-7'>
+                        <Link to='dashboard/profile'>
+                           <span className='text-base  text-black font-sans capitalize'>
+                              {user.userName}
+                           </span>
+                        </Link>
+                        <button
+                           onClick={() => logout()}
+                           className='signIn-btn rounded-full'>
+                           logout
+                        </button>
+                     </li>
+                  </>
+               ) : (
                   <>
                      <li className='lg:ml-6 text-base lg:my-0 my-7'>
-                        <Link to='/sign_in' className='signIn-btn rounded-full'>
+                        <Link
+                           to='/login'
+                           className='signIn-btn rounded-full hover:bg-[#ff7900] hover:text-white duration-200'>
                            SIGN IN
                         </Link>
                      </li>
                      <li className='lg:ml-6 text-base lg:my-0 my-7'>
                         <Link
-                           to='/register'
-                           className='register-btn rounded-full'>
+                           to='/signin'
+                           className='register-btn rounded-full hover:bg-transparent hover:text-[#ff7900] duration-200'>
                            REGISTER
                         </Link>
-                     </li>
-                  </>
-               )}
-
-               {loggedInUser.email && (
-                  <>
-                     <li className='lg:flex items-center space-x-4 text-base lg:my-0 my-7'>
-                        <span className='text-base  text-black font-sans capitalize'>
-                           {loggedInUser.userName}
-                        </span>
-                        <button
-                           onClick={() => setLoggedInUser(!loggedInUser)}
-                           className='signIn-btn rounded-full'>
-                           logout
-                        </button>
                      </li>
                   </>
                )}
