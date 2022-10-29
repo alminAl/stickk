@@ -24,7 +24,7 @@ export const ProfileImage = () => {
    );
    const { user } = useAuthContext();
    const { data: getUpdateData, updateData } = usePatchRequest();
-   console.log(userProfile)
+   console.log(user);
 
    const fileInput = useRef(null);
    const handleChange = e => {
@@ -130,8 +130,9 @@ const ProfileUpdateModel = ({ open, setOpen }) => {
                            size='small'
                            label='Full Name'
                            name='name'
-                           value={values.userName}
+                           // value={values.userName}
                            onChange={handleChange}
+                           value={values.userName ? values.userName : ''}
                            onBlur={handleBlur}
                            error={touched.userName && Boolean(errors.userName)}
                            helperText={touched.userName && errors.userName}

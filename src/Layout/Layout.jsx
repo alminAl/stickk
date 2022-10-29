@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
    return (
       <div className='layout'>
          {location.pathname.includes('dashboard') || <NavBar />}
-         <main className='px-4 sm:px-6 md:px-10 lg:px-24 xl:px-40 2xl:px-56'>
+         <main className=''>
             {children}
          </main>
          {location.pathname.includes('dashboard') || <Footer />}
