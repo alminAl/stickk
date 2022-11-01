@@ -27,10 +27,10 @@ const Register = () => {
       },
       validationSchema: signUpValidation,
       onSubmit: async (data, actions) => {
-         const { userName, mobile, email, password, profileImg, about } = data;
+         const { userName, mobile, email, password, about } = data;
          try {
             console.log(data);
-            signUp(userName, mobile, email, password, profileImg, about);
+            signUp(userName, mobile, email, password, about);
             resetForm();
          } catch (err) {
             console.log(err.message);
@@ -52,6 +52,7 @@ const Register = () => {
                      required
                      placeholder='Enter Name'
                      size='small'
+                     type="text"
                      label='Your Name'
                      name='userName'
                      value={values.userName}

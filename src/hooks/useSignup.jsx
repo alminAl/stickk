@@ -12,7 +12,6 @@ export const useSignUp = () => {
       email,
       password,
       about,
-      profileImg
    ) => {
       setIsLoading(true);
       setError(null);
@@ -28,7 +27,6 @@ export const useSignUp = () => {
                email,
                password,
                about,
-               profileImg,
             }),
          }
       );

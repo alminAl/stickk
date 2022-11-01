@@ -27,9 +27,8 @@ const NavBar = () => {
             </div>
 
             <ul
-               className={`lg:space-x-6 lg:flex lg:items-center lg:pb-0 pb-12 absolute lg:static bg-white lg:z-auto z-[-1] left-0 w-full lg:w-auto lg:pl-0 pl-9 transition-all duration-500 ease-in ${
-                  open ? 'top-20 shadow-xl' : 'top-[-490px]'
-               }`}>
+               className={`lg:space-x-6 lg:flex lg:items-center lg:pb-0 pb-12 absolute lg:static bg-white lg:z-auto z-[-1] left-0 w-full lg:w-auto lg:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-20 shadow-xl' : 'top-[-490px]'
+                  }`}>
                <li className='lg:ml-6 text-base lg:my-0 my-7'>
                   <Link
                      to='/'
@@ -57,7 +56,7 @@ const NavBar = () => {
                      <li className='lg:flex items-center space-x-4 text-base lg:my-0 my-7'>
                         <Link to='dashboard/profile'>
                            <span className='text-base  text-black font-sans capitalize'>
-                              {user.userName}
+                              Dashboard
                            </span>
                         </Link>
                         <button

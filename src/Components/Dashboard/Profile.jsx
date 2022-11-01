@@ -7,7 +7,7 @@ import ProfileUpdateModel, { ProfileImage } from './ProfileUpdateModel.jsx';
 const Profile = () => {
    const [userProfile] = useProfileStore(state => [state.userProfile], shallow);
    const [open, setOpen] = useState(false);
-   // console.log(userProfile);
+   console.log(userProfile);
 
    return (
       <>hes</>
