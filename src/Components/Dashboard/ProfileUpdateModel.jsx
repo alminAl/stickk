@@ -51,8 +51,8 @@ export const ProfileImage = () => {
             onClick={e => fileInput.current && fileInput.current.click()}>
             <img
                src={
-                  userProfile.user.profileImg
-                     ? userProfile.user.profileImg
+                  userProfile.profileImg
+                     ? userProfile.profileImg
                      : 'https://pbs.twimg.com/media/EYVxlOSXsAExOpX.jpg'
                }
                alt=''
@@ -90,19 +90,20 @@ const ProfileUpdateModel = ({ open, setOpen }) => {
       isSubmitting,
       handleSubmit,
       // setFieldValue,
-      // resetForm,
+      resetForm,
    } = useFormik({
       initialValues: {
-         userName: userProfile.user.userName ?? '',
-         email: userProfile.user.email ?? '',
-         mobile: userProfile.user.mobile ?? '',
-         about: userProfile.user.about ?? '',
+         userName: userProfile.userName ?? '',
+         mobile: userProfile.mobile ?? '',
+         email: userProfile.email ?? '',
+         about: userProfile.about ?? '',
       },
       validationSchema: userProfileUpdateValidation,
       onSubmit: async (data, action) => {
          try {
             updateData('/api/user/profile', user.token, data);
             setOpen(!open);
+            resetForm();
          } catch (error) {}
       },
    });
@@ -130,26 +131,11 @@ const ProfileUpdateModel = ({ open, setOpen }) => {
                            size='small'
                            label='Full Name'
                            name='name'
-                           // value={values.userName}
+                           value={values.userName}
                            onChange={handleChange}
-                           value={values.userName ? values.userName : ''}
                            onBlur={handleBlur}
                            error={touched.userName && Boolean(errors.userName)}
                            helperText={touched.userName && errors.userName}
-                        />
-                     </div>
-                     <div className='my-2'>
-                        <TextField
-                           fullWidth
-                           required
-                           size='small'
-                           label='Email'
-                           name='email'
-                           value={values.email}
-                           onChange={handleChange}
-                           onBlur={handleBlur}
-                           error={touched.email && Boolean(errors.email)}
-                           helperText={touched.email && errors.email}
                         />
                      </div>
 
@@ -165,6 +151,21 @@ const ProfileUpdateModel = ({ open, setOpen }) => {
                            onBlur={handleBlur}
                            error={touched.mobile && Boolean(errors.mobile)}
                            helperText={touched.mobile && errors.mobile}
+                        />
+                     </div>
+
+                     <div className='my-2'>
+                        <TextField
+                           fullWidth
+                           required
+                           size='small'
+                           label='Email'
+                           name='email'
+                           value={values.email}
+                           onChange={handleChange}
+                           onBlur={handleBlur}
+                           error={touched.email && Boolean(errors.email)}
+                           helperText={touched.email && errors.email}
                         />
                      </div>
 

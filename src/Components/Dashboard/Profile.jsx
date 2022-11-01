@@ -13,13 +13,15 @@ const Profile = () => {
       <div className='lg:w-9/12 m-auto space-y-6 px-4'>
          <div className='text-center space-y-2'>
             {/* <ProfileImage /> */}
-            <div className='space-y-2'>
-               <div className='w-24 h-24 relative rounded-full'>
-                  <img
-                     src='https://lifespringcdn.s3.amazonaws.com/wp-content/uploads/2021/12/16a-400x292.jpg'
-                     className='w-full h-full rounded-full'
-                     alt=''
-                  />
+            <div className='flex justify-center'>
+               <div className='space-y-2'>
+                  <div className='w-24 h-24 relative rounded-full'>
+                     <img
+                        src='https://lifespringcdn.s3.amazonaws.com/wp-content/uploads/2021/12/16a-400x292.jpg'
+                        className='w-full h-full rounded-full'
+                        alt=''
+                     />
+                  </div>
                </div>
             </div>
          </div>
@@ -32,7 +34,15 @@ const Profile = () => {
                         className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
                         User Name
                      </th>
-                     <td className='py-4 px-6'>Mamun Hossain</td>
+                     <td className='py-4 px-6'>{userProfile.userName}</td>
+                  </tr>
+                  <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
+                     <th
+                        scope='row'
+                        className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+                        Phone Number
+                     </th>
+                     <td className='py-4 px-6'>{userProfile.mobile}</td>
                   </tr>
                   <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
                      <th
@@ -40,7 +50,15 @@ const Profile = () => {
                         className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
                         User Email
                      </th>
-                     <td className='py-4 px-6'>hmamun492@gmail.com</td>
+                     <td className='py-4 px-6'>{userProfile.email}</td>
+                  </tr>
+                  <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
+                     <th
+                        scope='row'
+                        className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+                        About
+                     </th>
+                     <td className='py-4 px-6'>{userProfile.about}</td>
                   </tr>
                </tbody>
             </table>
