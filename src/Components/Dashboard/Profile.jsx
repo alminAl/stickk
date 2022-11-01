@@ -7,7 +7,7 @@ import ProfileUpdateModel, { ProfileImage } from './ProfileUpdateModel.jsx';
 const Profile = () => {
    const [userProfile] = useProfileStore(state => [state.userProfile], shallow);
    const [open, setOpen] = useState(false);
-   // console.log(userProfile);
+   console.log(userProfile);
 
    return (
       <div className='lg:w-9/12 m-auto space-y-6 px-4'>
