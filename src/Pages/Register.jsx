@@ -110,13 +110,11 @@ const Register = () => {
                   />
                </div>
 
-
                <div className='space-y-2'>
                   <InputLabel htmlFor='about'>About</InputLabel>
                   <TextField
                      fullWidth
                      required
-                     placeholder='Write A Short Note'
                      size='small'
                      label='About Yourself'
                      multiline
