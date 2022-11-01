@@ -24,9 +24,9 @@ const Banner = () => {
             <div className='w-full'>
                <select
                   name=''
-                  id=''
+                  // id=''
                   className='w-full border border-stone-200 h-14 px-6 rounded-2xl text-2xl bg-stone-200'>
-                  <option disabled selected value='select a goal'>
+                  <option disabled value='select a goal'>
                      select a goal
                   </option>
                   <option value='lose weight'>lose weigh</option>

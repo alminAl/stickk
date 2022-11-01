@@ -23,7 +23,6 @@ const Register = () => {
          mobile: '',
          email: '',
          password: '',
-         profileImg: '',
          about: '',
       },
       validationSchema: signUpValidation,
@@ -69,7 +68,7 @@ const Register = () => {
                      placeholder='Enter Mobile Number'
                      size='small'
                      label='Your Mobile Number'
-                     type='number'
+                     type='tel'
                      name='mobile'
                      value={values.mobile}
                      onChange={handleChange}
@@ -111,22 +110,6 @@ const Register = () => {
                   />
                </div>
 
-               <div className='space-y-1'>
-                  <InputLabel htmlFor='profileImg'>Profile Image</InputLabel>
-                  <TextField
-                     fullWidth
-                     required
-                     placeholder='Set Image Url'
-                     size='small'
-                     label='Image Url'
-                     name='profileImg'
-                     value={values.profileImg}
-                     onChange={handleChange}
-                     onBlur={handleBlur}
-                     error={touched.profileImg && Boolean(errors.profileImg)}
-                     helperText={touched.profileImg && errors.profileImg}
-                  />
-               </div>
 
                <div className='space-y-2'>
                   <InputLabel htmlFor='about'>About</InputLabel>

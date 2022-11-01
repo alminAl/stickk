@@ -19,7 +19,7 @@ const Goals = () => {
             {goalsData.map(goal => {
                const { id, goalName, member, goalImg, link } = goal;
                return (
-                  <a href={link} target='_blank' rel='noopener noreferrer'>
+                  <a key={Math.random()} href={link} target='_blank' rel='noopener noreferrer'>
                      <div
                         key={id}
                         className='flex justify-start items-center space-x-4 bg-[#F5EBF4] p-6 rounded-xl'>
