@@ -1,29 +1,64 @@
 import BorderColorIcon from '@mui/icons-material/BorderColor';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useProfileStore from '../../store/useProfileStore.js';
 import shallow from 'zustand/shallow';
-import ProfileUpdateModel, { ProfileImage } from './ProfileUpdateModel.jsx';
+import ProfileUpdateModel from './ProfileUpdateModel.jsx';
+import { useAuthContext } from '../../hooks/useAuthContext.jsx';
+import { usePatchRequest } from '../../hooks/requestMethods.jsx';
 
-const Profile = () => {
+
+
+export const ProfileImage = () => {
+   // glabal storage
+   const [userProfile, setUserProfile] = useProfileStore(
+      (state) => [state.userProfile, state.setUserProfile],
+      shallow
+   );
+   const { user } = useAuthContext();
+   const { data: getUpdateData, updateData } = usePatchRequest()
+
+
+   const fileInput = useRef(null)
+   const handleChange = (e) => {
+      const file = e.target.files[0]
+      const reader = new FileReader()
+      reader.onloadend = () => {
+         const data = {
+            profileImg: reader.result.toString()
+         }
+         updateData('/api/user/profile', user.token, data)
+      }
+      reader.readAsDataURL(file)
+   }
+   useEffect(() => {
+      if (getUpdateData) {
+         setUserProfile(getUpdateData)
+      }
+
+   }, [getUpdateData, setUserProfile])
+   return (
+      <>
+         <label htmlFor="dropzone-file" className='cursor-pointer' onClick={e => fileInput.current && fileInput.current.click()}>
+            <img
+               src={userProfile?.profileImg ? userProfile?.profileImg : 'https://pbs.twimg.com/media/EYVxlOSXsAExOpX.jpg'}
+               alt=''
+               className='inline-block m-auto w-32 h-32 rounded-full md:w-48 md:h-48 md:rounded-full'
+            />
+            <input id='dropzone-file' className='hidden' accept="image/*" multiple type="file" onChange={handleChange} />
+         </label>
+      </>
+   )
+}
+
+const UserProfile = () => {
    const [userProfile] = useProfileStore(state => [state.userProfile], shallow);
    const [open, setOpen] = useState(false);
-   console.log(userProfile);
+   
 
    return (
       <div className='lg:w-9/12 m-auto space-y-6 px-4'>
          <div className='text-center space-y-2'>
-            {/* <ProfileImage /> */}
-            <div className='flex justify-center'>
-               <div className='space-y-2'>
-                  <div className='w-24 h-24 relative rounded-full'>
-                     <img
-                        src='https://lifespringcdn.s3.amazonaws.com/wp-content/uploads/2021/12/16a-400x292.jpg'
-                        className='w-full h-full rounded-full'
-                        alt=''
-                     />
-                  </div>
-               </div>
-            </div>
+            <ProfileImage />
          </div>
          <div className='overflow-x-auto relative flex justify-center'>
             <table className='w-full lg:w-3/6 text-sm text-left text-gray-500 dark:text-gray-400 space-y-6'>
@@ -72,9 +107,10 @@ const Profile = () => {
                edit profile
             </button>
          </div>
-         <ProfileUpdateModel open={open} setOpen={x => setOpen(x)} />
+         {userProfile && <ProfileUpdateModel open={open} setOpen={x => setOpen(x)} />}
+
       </div>
    );
 };
 
-export default Profile;
+export default UserProfile;

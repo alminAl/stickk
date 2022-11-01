@@ -1,4 +1,12 @@
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../hooks/useAuthContext";
+
 const Banner = () => {
+   const { user } = useAuthContext();
+   const navigate = useNavigate();
+   const handleChange = (e) => {
+      navigate(`/commit/${e.target.value}`)
+   }
    const imgUrl =
       'http://prescriptionpsychiatrists.com.ph/wp-content/uploads/2020/08/4824-scaled.jpg';
    return (
@@ -23,21 +31,16 @@ const Banner = () => {
             </p>
             <div className='w-full'>
                <select
-                  name=''
-                  // id=''
+                  onChange={handleChange}
                   className='w-full border border-stone-200 h-14 px-6 rounded-2xl text-2xl bg-stone-200'>
-                  <option disabled value='select a goal'>
+                  <option value=''>
                      select a goal
                   </option>
-                  <option value='lose weight'>lose weigh</option>
-                  <option value='exercise regularly'>exercise regularly</option>
-                  <option value='quit smoking'>quit smoking</option>
-                  <option value='race'>race</option>
-                  <option value='maintain weight'>maintain weight</option>
-                  <option value='custom goad (everything else)'>
-                     custom goad (everything else)
-                  </option>
+                  <option value='weight_loss'>lose weigh</option>
+                  <option value='smoke'>quit smoking</option>
                </select>
+               {!user && <p className="text-red-600">Please login at first</p>}
+               
             </div>
          </div>
       </div>

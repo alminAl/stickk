@@ -25,11 +25,22 @@ export const loginValidation = () =>
 export const userProfileUpdateValidation = () =>
    yup.object().shape({
       userName: yup.string().required('User name is required'),
-      email: yup.string().email().required('Email is required'),
+      // email: yup.string().email().required('Email is required'),
       mobile: yup
          .string()
          .min(11)
          .max(11)
          .required('Mobile number is required'),
       about: yup.string().max(100).required('About is required'),
+   });
+
+export const bmiValidation = () =>
+   yup.object().shape({
+      height: yup.string().required('Field is required'),
+      weight: yup.string().required('Field is required'),
+   });
+
+export const smokeValidation = () =>
+   yup.object().shape({
+      numOfSmoke: yup.string().required('Field is required'),
    });

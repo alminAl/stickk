@@ -80,6 +80,7 @@ const ProfileUpdateModel = ({ open, setOpen }) => {
    const { user } = useAuthContext();
    const { data: getUpdateData, updateData } = usePatchRequest();
 
+
    /** form submission */
    const {
       handleChange,
@@ -90,12 +91,12 @@ const ProfileUpdateModel = ({ open, setOpen }) => {
       isSubmitting,
       handleSubmit,
       // setFieldValue,
-      resetForm,
+      // resetForm,
    } = useFormik({
       initialValues: {
          userName: userProfile.userName ?? '',
          mobile: userProfile.mobile ?? '',
-         email: userProfile.email ?? '',
+         // email: userProfile.email ?? '',
          about: userProfile.about ?? '',
       },
       validationSchema: userProfileUpdateValidation,
@@ -103,7 +104,7 @@ const ProfileUpdateModel = ({ open, setOpen }) => {
          try {
             updateData('/api/user/profile', user.token, data);
             setOpen(!open);
-            resetForm();
+            // resetForm();
          } catch (error) {}
       },
    });
@@ -130,7 +131,7 @@ const ProfileUpdateModel = ({ open, setOpen }) => {
                            required
                            size='small'
                            label='Full Name'
-                           name='name'
+                           name='userName'
                            value={values.userName}
                            onChange={handleChange}
                            onBlur={handleBlur}
@@ -145,7 +146,7 @@ const ProfileUpdateModel = ({ open, setOpen }) => {
                            required
                            size='small'
                            label='Mobile'
-                           name='mobile_number'
+                           name='mobile'
                            value={values.mobile}
                            onChange={handleChange}
                            onBlur={handleBlur}
@@ -154,7 +155,7 @@ const ProfileUpdateModel = ({ open, setOpen }) => {
                         />
                      </div>
 
-                     <div className='my-2'>
+                     {/* <div className='my-2'>
                         <TextField
                            fullWidth
                            required
@@ -167,7 +168,7 @@ const ProfileUpdateModel = ({ open, setOpen }) => {
                            error={touched.email && Boolean(errors.email)}
                            helperText={touched.email && errors.email}
                         />
-                     </div>
+                     </div> */}
 
                      <div className='my-2'>
                         <TextField

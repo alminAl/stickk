@@ -1,6 +1,7 @@
 import { goalsData } from '../../test/test_data.js';
 
 const Goals = () => {
+   
    return (
       <div className='space-y-10 py-20 sm:px-6 md:px-10 lg:px-24 xl:px-40 2xl:px-56'>
          <div className='text-center'>

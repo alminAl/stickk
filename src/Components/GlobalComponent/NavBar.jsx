@@ -43,18 +43,21 @@ const NavBar = () => {
                      ABOUT US
                   </Link>
                </li>
-               <li className='lg:ml-6 text-base lg:my-0 my-7'>
-                  <Link
-                     to='/'
-                     className='text-neutral-700 duration-500 hover:text-black'>
-                     HELP CENTER
-                  </Link>
-               </li>
+               {
+                  user && <li className='lg:ml-6 text-base lg:my-0 my-7'>
+                     <Link
+                        to='/commit'
+                        className='text-neutral-700 duration-500 hover:text-black'>
+                        My Commits
+                     </Link>
+                  </li>
+               }
+
 
                {user ? (
                   <>
                      <li className='lg:flex items-center space-x-4 text-base lg:my-0 my-7'>
-                        <Link to='dashboard/profile'>
+                        <Link to='profile'>
                            <span className='text-base  text-black font-sans capitalize'>
                               Dashboard
                            </span>
