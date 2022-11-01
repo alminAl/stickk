@@ -10,8 +10,9 @@ const Profile = () => {
    // console.log(userProfile);
 
    return (
-      <div className='mt-16 space-y-6'>
-         <div className='flex justify-center'>
+      <div className='lg:w-9/12 m-auto space-y-6 px-4'>
+         <div className='text-center space-y-2'>
+            {/* <ProfileImage /> */}
             <div className='space-y-2'>
                <div className='w-24 h-24 relative rounded-full'>
                   <img
@@ -37,35 +38,23 @@ const Profile = () => {
                      <th
                         scope='row'
                         className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
-                        User Number
-                     </th>
-                     <td className='py-4 px-6'>01265214564</td>
-                  </tr>
-                  <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
-                     <th
-                        scope='row'
-                        className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
                         User Email
                      </th>
                      <td className='py-4 px-6'>hmamun492@gmail.com</td>
-                  </tr>
-                  <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
-                     <th
-                        scope='row'
-                        className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
-                        About
-                     </th>
-                     <td className='py-4 px-6'>about user</td>
                   </tr>
                </tbody>
             </table>
          </div>
 
-         <div className='flex justify-center'>
-            <button className='signIn-btn inline-block rounded-md px-6'>
-               Edit Profile
+         <div className='text-center py-10'>
+            <button
+               onClick={() => setOpen(!open)}
+               className='signIn-btn rounded-full hover:bg-[#ff7900] hover:text-white duration-200'>
+               <BorderColorIcon className='mr-2' />
+               edit profile
             </button>
          </div>
+         <ProfileUpdateModel open={open} setOpen={x => setOpen(x)} />
       </div>
    );
 };
